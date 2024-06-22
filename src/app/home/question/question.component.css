@@ -1,0 +1,64 @@
+.main-content {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: grid; /* Use CSS Grid */
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-template-rows: repeat(2, auto); /* Two rows */
+    gap: 20px; /* Gap between grid items */
+  }
+  
+  .container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    font-size: 14px; /* Adjust font size */
+  }
+  
+  .form-group,
+  .answer-group {
+    margin-bottom: 15px; /* Add margin between form groups */
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px; /* Adjust font size */
+  }
+  
+  input,
+  textarea {
+    padding: 10px;
+    font-size: 14px; /* Adjust font size */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Make input fields and textareas full width */
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #086df2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px; /* Adjust font size */
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .answer-group {
+    margin-top: 10px;
+  }
+  
+  .options {
+    margin-top: 5px;
+    font-size: 14px; /* Adjust font size */
+  }
+  

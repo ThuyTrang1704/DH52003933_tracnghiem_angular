@@ -1,98 +1,24 @@
-<!-- <nav class="navbar bg-body-tertiary">
-  <div class="dropdown pb-4">
-    <a
-      href="#"
-      class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-      id="dropdownUser1"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      <img
-        src="https://github.com/mdo.png"
-        alt="hugenerd"
-        width="30"
-        height="30"
-        class="rounded-circle"
-      />
-      <span class="d-none d-sm-inline mx-1">loser</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li>
-        <hr class="dropdown-divider" />
-      </li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
-    </ul>
-  </div>
-</nav> -->
 <header class="py-2 px-1 border-bottom">
-  <div
-    class="container-fluid d-grid gap-3 align-items-center"
-    style="grid-template-columns: 1fr 2fr"
-  >
+  <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr">
     <div class="dropdown d-flex w-100">
-      <a
-        href="#"
-        class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none"
-        id="dropdownNavLink"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
+      <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-dark text-decoration-none" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
         <svg class="bi me-2" width="40" height="32">
           <use xlink:href="#bootstrap"></use>
         </svg>
         STU
       </a>
       <form class="w-100 me-lg-1">
-        <input
-          type="search"
-          class="form-control"
-          placeholder="Search..."
-          aria-label="Search"
-        />
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
       </form>
     </div>
     <div class="d-flex align-items-end justify-content-end">
       <div class="flex-shrink-0 dropdown">
-        <a
-          href="#submenuUser"
-          class="d-block link-dark text-decoration-none"
-          id="dropdownUser2"
-          data-bs-toggle="collapse"
-          aria-expanded="false"
-        >
-          <img
-            src="https://github.com/mdo.png"
-            alt="mdo"
-            width="32"
-            height="32"
-            class="rounded-circle"
-          />
+        <a href="#submenuUser" class="d-block link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="collapse" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle" />
         </a>
-        <!-- <ul
-          id="submenuUser"
-          class="dropdown-menu text-small shadow mt-xxl-4"
-          aria-labelledby="dropdownUser2"
-        > -->
-        <ul
-          id="submenuUser"
-          class="dropdown-menu text-small shadow show"
-          aria-labelledby="dropdownUser2"
-          data-popper-placement="bottom-end"
-          style="
-            position: absolute;
-            inset: 2px auto auto 1px;
-            margin: 0px;
-            transform: translate(-130px, 34px);
-          "
-        >
-          <li>
-            <a class="dropdown-item" href="#">{{ username }}</a>
-          </li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
+        <ul id="submenuUser" class="dropdown-menu text-small shadow show" aria-labelledby="dropdownUser2" data-popper-placement="bottom-end" style="position: absolute; inset: 2px auto auto 1px; margin: 0px; transform: translate(-130px, 34px);">
+          <li><a class="dropdown-item" href="#">{{ username }}</a></li>
+          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a></li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" (click)="logout()">Log out</a></li>
         </ul>
@@ -100,3 +26,32 @@
     </div>
   </div>
 </header>
+
+<!-- Password Change Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="changePasswordForm">
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label">Current Password</label>
+            <input type="password" class="form-control" id="currentPassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <input type="password" class="form-control" id="newPassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+            <input type="password" class="form-control" id="confirmPassword" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Change Password</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

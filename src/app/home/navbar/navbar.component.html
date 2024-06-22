@@ -64,7 +64,11 @@
             data-bs-parent="#menu"
           >
             <li class="w-100">
-              <a href="#" class="nav-link px-0">
+              <a
+                class="nav-link px-0"
+                [routerLink]="['class']"
+                ariaCurrentWhenActive="page"
+              >
                 <span class="d-none d-sm-inline">Class</span> </a
               >
             </li>
@@ -83,7 +87,7 @@
             class="nav-link px-0 align-middle"
           >
             <i class="fs-4 bi-grid"></i>
-            <span class="ms-1 d-none d-sm-inline">Quản Lí Câu hỏi</span>
+            <span class="ms-1 d-none d-sm-inline">Quản Lí Ngân hàng câu hỏi</span>
           </a>
           <ul
             class="collapse nav flex-column ms-1"
@@ -91,20 +95,33 @@
             data-bs-parent="#menu"
           >
             <li class="w-100">
-              <a href="#" class="nav-link px-0">
-                <span class="d-none d-sm-inline">Product</span> 1</a
+              <a
+                class="nav-link px-0"
+                [routerLink]="['question']"
+                ariaCurrentWhenActive="page"
+              >
+              
+                <span class="d-none d-sm-inline">Câu hỏi</span> </a
               >
             </li>
             <li>
-              <a href="#" class="nav-link px-0">
-                <span class="d-none d-sm-inline">Product</span> 2</a
+              <a
+                class="nav-link px-0"
+                [routerLink]="['subject']"
+                ariaCurrentWhenActive="page"
+              >
+                <span class="d-none d-sm-inline">Môn học</span> </a
               >
             </li>
           </ul>
         </li>
         <li>
-          <a href="#" class="nav-link px-0 align-middle">
             <i class="fs-4 bi-people"></i>
+            <a
+                class="nav-link px-0"
+                [routerLink]="['exam']"
+                ariaCurrentWhenActive="page"
+              >
             <span class="ms-1 d-none d-sm-inline">Quản lí đề thi</span>
           </a>
         </li>

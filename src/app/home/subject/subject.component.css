@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .subjects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 30px;
+  }
+  
+  .subject-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .subject-box:hover {
+    transform: translateY(-5px);
+  }
+  
+  .subject-box h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .subject-box p {
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .math {
+    border-top: 5px solid #2196f3;
+  }
+  
+  .literature {
+    border-top: 5px solid #9b59b6;
+  }
+  
+  .english {
+    border-top: 5px solid #e67e22;
+  }
+  
+  .chemistry {
+    border-top: 5px solid #e74c3c;
+  }
+  
+  .physics {
+    border-top: 5px solid #1abc9c;
+  }
+  
+  .biology {
+    border-top: 5px solid #7f8c8d;
+  }

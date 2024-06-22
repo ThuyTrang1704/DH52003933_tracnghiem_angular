@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HeaderComponent } from './header/header.component';
 import { NavSidebarComponent } from './nav-sidebar/nav-sidebar.component';
 import { UserComponent } from './user/user.component';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { QuestionComponent } from './question/question.component';
+import { ClassComponent } from './class/class.component';
+import { SubjectComponent } from './subject/subject.component';
+
 
 @Component({
   selector: 'app-home',
@@ -17,6 +20,9 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
+    QuestionComponent,
+    ClassComponent,
+    SubjectComponent
   ],
 })
 export class HomeComponent {}

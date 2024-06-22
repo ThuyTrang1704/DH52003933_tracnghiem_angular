@@ -1,43 +1,88 @@
 import { Component, OnInit } from '@angular/core';
+import { ClassService } from '../../services/class.service';
+import { Class } from '../../models/class';
+import { CommonModule } from '@angular/common';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/users';
-import { CommonModule, NgForOf } from '@angular/common';
-
+  Validators,} from '@angular/forms';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-class',
   standalone: true,
   templateUrl: './class.component.html',
-  styleUrl: './class.component.css',
-  imports: [CommonModule, ReactiveFormsModule],
+  styleUrls: ['./class.component.css'],
+  imports: [CommonModule,ReactiveFormsModule],
 })
 export class ClassComponent implements OnInit {
-  UserList: User[] = [];
-  showAddUserForm: boolean = false;
+  ClassList: Class[] = [];
+  isAddClassModalOpen = false;
+  selectedClassesForDeletion: Class[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private classService: ClassService) {}
+
   ngOnInit(): void {
-    this.fetchUser();
+    this.fetchClasses();
   }
-  fetchUser() {
-    this.userService.getUsers().subscribe(
+
+  fetchClasses() {
+    this.classService.getClass().subscribe(
       (data) => {
-        this.UserList = data;
-        console.log(this.UserList);
+        this.ClassList = data;
+        console.log(this.ClassList);
       },
       (error) => {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching classes:', error);
       }
     );
   }
-  onSubmit() {}
-  toggleAddUserForm() {
-    this.showAddUserForm = !this.showAddUserForm;
+
+  deleteClasses(): void {
+    if (this.selectedClassesForDeletion.length === 0) {
+      alert('Please select classes to delete.');
+      return;
+    }
+
+    const confirmation = confirm('Are you sure you want to delete the selected classes?');
+    if (!confirmation) {
+      return; // User canceled deletion
+    }
+
+    this.selectedClassesForDeletion.forEach((classItem) => {
+      this.classService.deleteClass(classItem.id).subscribe({
+        next: (response) => {
+          console.log('Class deleted successfully:', response);
+          this.ClassList = this.ClassList.filter((c) => c.id !== classItem.id); // Update local list
+        },
+        error: (error) => {
+          console.error('Error deleting class:', error);
+          alert('An error occurred while deleting classes. Please try again.');
+        },
+      });
+    });
+
+    this.selectedClassesForDeletion = []; // Clear selected classes after deletion
+  }
+
+  isSelected(classItem: Class): boolean {
+    return this.selectedClassesForDeletion.some((selectedClass) => selectedClass.id === classItem.id);
+  }
+
+  toggleSelection(classItem: Class): void {
+    const classIndex = this.selectedClassesForDeletion.findIndex((selectedClass) => selectedClass.id === classItem.id);
+    if (classIndex > -1) {
+      this.selectedClassesForDeletion.splice(classIndex, 1);
+    } else {
+      this.selectedClassesForDeletion.push(classItem);
+    }
+  }
+
+  openAddClassModal(): void {
+    this.isAddClassModalOpen = true;
+  }
+
+  closeAddClassModal(): void {
+    this.isAddClassModalOpen = false;
   }
 }
